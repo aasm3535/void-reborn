@@ -29,6 +29,8 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: npm ci
 
       - name: Build React bundles required by Void
