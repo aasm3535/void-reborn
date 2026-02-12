@@ -34,6 +34,12 @@ jobs:
       - name: Build React bundles required by Void
         run: npm run buildreact
 
+      - name: Build Windows base package
+        run: npm run gulp -- vscode-win32-x64-min-ci
+
+      - name: Prepare Inno updater
+        run: npm run gulp -- vscode-win32-x64-inno-updater
+
       - name: Build Windows User Setup (.exe)
         run: npm run gulp -- vscode-win32-x64-user-setup
 
