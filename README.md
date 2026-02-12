@@ -1,39 +1,32 @@
-# Welcome to Void.
+# Void Reborn
 
-<div align="center">
-	<img
-		src="./src/vs/workbench/browser/parts/editor/media/slice_of_void.png"
-	 	alt="Void Welcome"
-		width="300"
-	 	height="300"
-	/>
-</div>
+A clean, community-first fork of [voideditor/void](https://github.com/voideditor/void), itself based on VS Code.
 
-Void is the open-source Cursor alternative.
+## What this fork is about
 
-This repo contains the full sourcecode for Void. We are currently in [open beta](https://voideditor.com/email) for Discord members (see the `announcements` channel), with a waitlist for our official release. If you're new, welcome!
+- keep the project open and understandable
+- ship practical UX improvements
+- provide reproducible builds for Linux + Windows
 
-- 👋 [Discord](https://discord.gg/RSNjgaugJs)
+## Attribution
 
-- 🔨 [Contribute](https://github.com/voideditor/void/blob/main/CONTRIBUTING.md)
+This project is a fork of:
+- [voideditor/void](https://github.com/voideditor/void)
+- [microsoft/vscode](https://github.com/microsoft/vscode)
 
-- 🚙 [Roadmap](https://github.com/orgs/voideditor/projects/2)
-
-- 📝 [Changelog](https://voideditor.com/changelog)
-
+A lot of UX ideas are inspired by modern AI IDEs, including **Cursor**, **Trae**, and similar tools.
 
 ## Contributing
 
-1. Feel free to attend a weekly meeting in our Discord channel if you'd like to contribute!
+If you find bugs or regressions, please open an issue:
+- <https://github.com/aasm3535/void-reborn/issues>
 
-2. To get started working on Void, see [Contributing](https://github.com/voideditor/void/blob/main/CONTRIBUTING.md).
+PRs are welcome.
 
-3. We're open to collaborations and suggestions of all types - just reach out.
+## CI Builds
 
+GitHub Actions builds are configured for:
+- Ubuntu (Linux)
+- Windows
 
-## Reference
-
-Void is a fork of the [vscode](https://github.com/microsoft/vscode) repository. For some useful links on VSCode, see [`VOID_USEFUL_LINKS.md`](https://github.com/voideditor/void/blob/main/VOID_USEFUL_LINKS.md).
-
-## Support
-Feel free to reach out in our Discord or contact us via email: hello@voideditor.com.
+See Actions tab for artifacts.
