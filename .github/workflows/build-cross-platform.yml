@@ -26,8 +26,17 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Install Linux build deps (kerberos headers)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libkrb5-dev
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Build React bundles required by Void
+        run: npm run buildreact
 
       - name: Compile
         run: npm run compile
