@@ -1,0 +1,57 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/build-windows-exe.yml'
+      - 'product.json'
+      - 'build/**'
+      - 'src/**'
+      - 'resources/**'
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  build-windows-exe:
+    runs-on: windows-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React bundles required by Void
+        run: npm run buildreact
+
+      - name: Build Windows User Setup (.exe)
+        run: npm run gulp -- vscode-win32-x64-user-setup
+
+      - name: Collect artifacts
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          if [ -d .build/win32-x64/user-setup ]; then
+            cp -v .build/win32-x64/user-setup/*.exe artifacts/ || true
+            cp -v .build/win32-x64/user-setup/*.zip artifacts/ || true
+          fi
+          if [ -f .build/win32-x64/user-setup/VSCodeSetup.exe ]; then
+            cp -v .build/win32-x64/user-setup/VSCodeSetup.exe artifacts/VoidRebornSetup-x64.exe
+          fi
+          ls -la artifacts
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: void-reborn-windows-exe
+          path: artifacts/
