@@ -3,8 +3,20 @@ name: Build (Linux + Windows)
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE*'
+      - '.vscode/**'
+      - '.devcontainer/**'
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE*'
+      - '.vscode/**'
+      - '.devcontainer/**'
   workflow_dispatch:
 
 jobs:
